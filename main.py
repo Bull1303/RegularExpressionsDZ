@@ -1,4 +1,3 @@
-from pprint import pprint
 # Читаем адресную книгу в формате CSV в список contacts_list:
 import csv
 import re
@@ -44,18 +43,16 @@ temp_list = []
 merge_list = []
 contacts_new = [contacts_list[0]]
 
-for id in range(1, len(contacts_list)):
-    line = contacts_list[id]
+for index in range(1, len(contacts_list)):
+    line = contacts_list[index]
     id_list = [n for n, x in enumerate(contacts_list) if x[:2] == line[:2]]
     merge_list = [''] * len(line)
-    for id in id_list:
-        if id not in temp_list:
-            merge_list = merge_lists(contacts_list[id], merge_list)
-            temp_list.append(id)
-            print(merge_list)
+    for index_ in id_list:
+        if index_ not in temp_list:
+            merge_list = merge_lists(contacts_list[index_], merge_list)
+            temp_list.append(index_)
     if ''.join(merge_list) != '':
         contacts_new.append(merge_list)
-pprint(contacts_new)
 
 
 # 2. Сохраните получившиеся данные в другой файл.
